@@ -1,0 +1,1 @@
+This is a repository containing homework (and possibly other related stuff) for CS338 at Carleton Spring 2022.
