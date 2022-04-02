@@ -1,0 +1,43 @@
+Author: Robbie Young
+
+1) ipconfig getifaddr en0 / ipconfig getaddr en1
+
+en0 is for ethernet and en1 is for wireless when both are connected. When individual wireless may default to en0.
+
+https://apple.stackexchange.com/questions/20547/how-do-i-find-my-ip-address-from-the-command-line
+
+2) host <address>
+
+https://serverfault.com/questions/170706/easy-way-to-get-ip-address-from-hostname-using-a-unix-shell
+
+3) nslookup <address>
+
+https://serverfault.com/questions/74042/resolve-host-name-from-ip-address
+
+4) scp <filename> <user>@<remote_server>:<remote_path>
+
+The above is transfering from the Linux terminal. In my case it would be: scp transfertest.txt youngr2@mantis.mathcs.carleton.edu:~cs338/test , which would then prompt with a password. 
+
+https://superuser.com/questions/517943/copy-files-from-linux-server-to-mac-desktop
+
+5) netstat -ln | grep <PORT>
+
+The "n" of the "ln" is optional, I included it because of personal preference
+
+https://askubuntu.com/questions/538208/how-to-check-opened-closed-ports-on-my-computer
+
+6) netstat -an
+
+The "n" of the "an" is optional, I included it because of personal preference
+
+https://askubuntu.com/questions/538208/how-to-check-opened-closed-ports-on-my-computer
+
+7) wget <URL>
+
+https://unix.stackexchange.com/questions/528439/saving-web-browser-page-through-terminal
+
+8) curl -I <URL>
+
+https://serverfault.com/questions/249483/shell-command-to-see-the-http-headers
+
+9)
