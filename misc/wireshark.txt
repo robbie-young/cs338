@@ -1,0 +1,44 @@
+Names: Avery Hall, Robbie Young
+
+===== DAYTIME =====
+1)
+
+1 192.168.59.129 132.163.96.6 TCP 51238 → 13 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM=1 TSval=2817369818 TSecr=0 WS=128
+
+2 132.163.96.6 192.168.59.129TCP 60 13 → 51238 [SYN, ACK] Seq=0 Ack=1 Win=64240 Len=0 MSS=1460
+
+3 192.168.59.129 132.163.96.6 TCP 51238 → 13 [ACK] Seq=1 Ack=1 Win=64240 Len=0
+
+2) Port 51238. The client needs specific ports so that packets can be divided up based on their respective processes/applications. All packets arriving at the same location regardless of use would be chaos.
+
+3) 4 132.163.96.6 192.168.59.129 DAYTIME DAYTIME Response
+
+4) Daytime: \n59674 22-04-05 01:36:45 50 0 0   0.0 UTC(NIST) * \n
+
+The first number (59674) is the Modified Julian Day. The second (22-04-05) is the date. The third (01:36:45) is the time. The fourth (50) is the Daylight Savings Time; it gives information regarding active or imminent Daylight Savings Time in the US (as in if the US is currently in Standard time, DST, or if DST is imminent). The fifth (first 0 after the 50) represents Leap Second, working similarly to the system in place for DST. The sixth (second 0 after the 50) represents the Health of the time server (0 meaning fully healthy). The seventh (0.0) represents the time advance, which is the time difference between when the packet was sent and the time the packet says it is (as in if the packet says it is 3:30 and the time advance is 50, then the packet was sent at 50ms before 3:30). The eight (UTC(NIST)) represents the timezone. The final (*) is there only for formatting.
+
+https://tf.nist.gov/general/pdf/1046.pdf
+
+5) Synchronize
+
+6) Acknowledged
+
+7) Finish
+
+8) The client initialized the closing of the TCP connection. The packet with the [FIN] flag has two associated IP numbers, the first being the source IP and the other the destination IP. The destination IP matches that of the IP we initally used to make the request through the terminal, and the source IP is our IP.
+
+===== HTTP =====
+1) 39 connections. This was different every time we tested the experiment. Someone working near us also had different (fewer) connections.
+
+2) Yes, in the frame that includes "GET /index.html".
+
+22 192.168.59.129 45.79.89.123 HTTP GET /index.html HTTP/1.1 
+
+3) Yes, in the frame that includes "GET /jeff_square_head.jpg"
+
+26 192.168.59.129 45.79.89.123 HTTP GET /jeff_square_head.jpg HTTP/1.1
+
+===== QUESTIONS =====
+How do we interpret the additional info in packet summaries?
+
+What would wireshark look like if there's packet lost, something went wrong, etc., and how can we tell?
