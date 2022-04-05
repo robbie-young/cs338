@@ -42,3 +42,5 @@ https://tf.nist.gov/general/pdf/1046.pdf
 How do we interpret the additional info in packet summaries?
 
 What would wireshark look like if there's packet lost, something went wrong, etc., and how can we tell?
+
+How is your dog?
