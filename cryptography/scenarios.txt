@@ -1,4 +1,7 @@
-﻿1. Alice and Bob first use Diffie-Hellman to agree on a shared secret key K. Then, Alice encrypts the message M using AES(K, M) to create a ciphertext C, which is then sent to Bob. Bob then decrypts C using AES_C(K, C) to get the original message M.
+﻿Authors: Brian Rhee, Robbie Young
+
+
+1. Alice and Bob first use Diffie-Hellman to agree on a shared secret key K. Then, Alice encrypts the message M using AES(K, M) to create a ciphertext C, which is then sent to Bob. Bob then decrypts C using AES_C(K, C) to get the original message M.
 2. Alice and Bob first use Diffie-Hellman to agree on a shared secret key K. Then, Alice creates a digest (D) of her message concatenated to the secret key by hashing it with SHA-256; this produces D such that D = H(M || K). Alice then concatenates D to M as M || D and sends the concatenated message to Bob. If Mal modifies the message to M’, D will not equate to H(M’ || K). Mal will not be able to recreate D with M’ as Mal does not have access to K.
 3. First, Alice and Bob use Diffie-Hellman to agree on a shared secret key K. Then, Alice encrypts the message M using AES(K, M) to create ciphertext C. 
 To ensure Bob that Alice is the one sending across the contract, Alice will create a digital signature (Sig) to concatenate to the end of the encrypted message. To do this, she can begin by using SHA-256 to create a digest (D) of her encrypted message and hashing it with SHA-256; this produces D such that D = H(C). Alice then computes a Sig such that Sig = E(S_A, D). Once Alice computes Sig, she concatenates it onto the end of her ciphertext C, such that the resulting message she sends across to Bob is C || Sig. 
