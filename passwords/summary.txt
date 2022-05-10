@@ -34,7 +34,7 @@ Yes, by quite a bit; 0.0.000002 from password1 to password2, 59 from password2 t
 - Suppose you wanted to precompute all the hashes for each possible password
 so you could just look up the password in a table indexed by the hash. How much
 memory would be required for each phase?
-Password1: 267733 * 80 bytes= 21.418640 MB
+Password1: 267733 * 80 bytes = 21.418640 MB
 Password2: 267733 * 267733 * 80 bytes = 5.73447674 TB
 Password3: 267733 * 2805 * 80 bytes = 60.0792852 GB
 
