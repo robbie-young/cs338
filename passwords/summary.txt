@@ -1,0 +1,45 @@
+Author: Robbie Young
+
+Part 1
+Total time: 14.87s
+Number of hashes computed: 267733
+Passwords cracked: 2793
+Time per hash computed: 0.00005554s
+Time per password cracked: 0.00532402s
+Passwords cracked per number of hashes computed: 0.01043197
+
+Part 2
+Total time: 2 hours 49 minutes 52 seconds and 23 milliseconds
+Number of hashes computed: 136008364 calculated in this timeframe, 71680959289 total in a theoretical world
+Passwords cracked: 4
+Time per hash computed: 0.00007494s
+Time per password cracked: 42 minutes 28 seconds and 6 milliseconds
+Passwords cracked per number of hashes computed: 0.00000003
+
+Part 3
+Total time: 34 minutes 33 seconds and 68 milliseconds
+Number of hashes computed: 12851184 calculated in this timeframe, 750991065 total in a theoretical world
+Passwords cracked: 48
+Time per hash computed: 0.00016136s
+Time per password cracked: 43 seconds and 2 milliseconds
+Passwords cracked per number of hashes computed: 0.00000374
+
+Analysis:
+- Did your time per hash computed change between phases? By what factor? Why? 
+Yes, by a factor of 3.44 from password1 to password2, 0.46 from password2 to password3, and 0.34 from password1 to password3. This is most likely due to the additional computations in actually calculating the hashes, such as concatenating the salt, concatenating the words together, etc.
+
+- Did your time per password crack change between phases? By what factor? Why?
+Yes, by quite a bit; 0.0.000002 from password1 to password2, 59 from password2 to password3, and 0.0001 from password1 to password2. This is primarily due to the quantity in hashes calculated. In password1 only one hash per word is needed, in password2 there are n^2 hashes that need to be calculated, and in password3 there are n*(how many users) hashes that need to be calculated.
+
+- Suppose you wanted to precompute all the hashes for each possible password
+so you could just look up the password in a table indexed by the hash. How much
+memory would be required for each phase?
+Password1: 267733 * 80 bytes= 21.418640 MB
+Password2: 267733 * 267733 * 80 bytes = 5.73447674 TB
+Password3: 267733 * 2805 * 80 bytes = 60.0792852 GB
+
+- Give 3-4 reasons we should store password hashes and not the passwords themselves.
+1) Storing hashes means the original password if implemented correctly means retrieving the original password is inconceivable if the hash file leaked
+2) Storing hashes if implemented with salts mean repeat passwords still create different hashes, meaning that if one password is cracked then not all other exact passwords are necessarily cracked as well
+3) Allows us to calculate the amount of space needed accurately to store passwords/hashes; since passwords can vary in lengths, space is unpredictable and partitioning may prove difficult, but with hashes all can be set to a fixed amount
+4) One person can use the same password on different websites, and different hashes for each webstite could be generated
